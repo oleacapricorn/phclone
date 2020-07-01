@@ -9,7 +9,7 @@ export default class ItemsContainer extends Component {
     super();
 
     this.state = {
-    pageTitle: "All Api Data",
+    pageTitle: "Featured",
     isLoading: false,
     data: []
     };
@@ -53,9 +53,15 @@ export default class ItemsContainer extends Component {
     return this.state.data.map(item => {
       return <OneItem 
       title={item.name} 
+      description={item.tagline} 
       url={item.discussion_url} 
       created_at={item.created_at} 
       date={item.day} 
+      img={item.thumbnail.image_url} 
+      comments={item.comments_count} 
+      upvotes={item.votes_count}  
+      website={item.redirect_url} 
+      user={ItemsContainer.user}
       key={item.id} 
       slug={item.slug} />;
     });
@@ -71,8 +77,8 @@ export default class ItemsContainer extends Component {
     }
 
   return (
-    <div>
-      <h2>{this.state.pageTitle}</h2>
+    <div className="items-container">
+      {/* <h2>{this.state.pageTitle}</h2> */}
       {this.OneItem()}
     </div>
   );

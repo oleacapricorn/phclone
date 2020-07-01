@@ -1,12 +1,12 @@
 import React from "react";
 
-import BackBtn from "../content/back-button";
+import UpvoteBtn from "../content/upvote-button";
 import CreateItemContainer from "../content/create-item-container";
 
 export default function() {
   return (
     <div className="content-wrapper">
-      <BackBtn />
+      <UpvoteBtn />
       <h2>Create Item </h2>
        
       <div>

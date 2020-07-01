@@ -19,14 +19,14 @@
 }
 
 @mixin back-btn {
-  height: 42px;
+  height: 40px;
   width: 120px;
-  font-size: 1em;
+  font-size:0.9em;
   font-weight: 500;
-  border: 1px solid $black;;
+  border: 1px solid $blue;;
   border-radius: 4px;
   transition: all 0.5 ease-in-out;
-  color: $black;;
+  color: $blue;;
 
   &:active,
   &:focus {
@@ -34,7 +34,7 @@
   }
 
   &:hover {
-      background-color: $black;
+      background-color: $blue;
       color: $white;
       transition: all 0.5 ease-in-out;
   }
