@@ -29,8 +29,12 @@ export default class NavContainer extends Component {
             <NavLink to="/view" activeClassName="nav-link-active">View</NavLink>
           </div>
         </div>
+
         <div className="nav-right-side"> 
-          <button className="add-btn">+</button>
+        <NavLink to="/create" activeClassName="nav-link-active">
+        <button className="add-btn">+</button>
+        </NavLink>
+        <button className="btn">Sign In</button>
         </div>
 
       </div>

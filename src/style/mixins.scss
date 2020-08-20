@@ -14,8 +14,11 @@
   }
 
   &:hover {
-      background-color: $green;
-  }
+    background-color: $blue;
+    border-color: $blue;
+
+    transition: all 0.5 ease-in-out;  }
+    
 }
 
 @mixin back-btn {
@@ -47,8 +50,10 @@
   font-weight: 500;
   background-color: $green;
   border-radius: 40px;
+  border-color: $green;
+
   transition: all 0.5 ease-in-out;
-  color: $blue;;
+  color: $white;
 
   &:active,
   &:focus {
@@ -57,10 +62,9 @@
 
   &:hover {
       background-color: $blue;
-      color: $white;
+      border-color: $blue;
+
       transition: all 0.5 ease-in-out;
   }
 }
-
-
 
