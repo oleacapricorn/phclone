@@ -39,3 +39,28 @@
       transition: all 0.5 ease-in-out;
   }
 }
+
+@mixin add-btn {
+  height: 40px;
+  width: 40px;
+  font-size:0.9em;
+  font-weight: 500;
+  background-color: $green;
+  border-radius: 40px;
+  transition: all 0.5 ease-in-out;
+  color: $blue;;
+
+  &:active,
+  &:focus {
+      outline: none;
+  }
+
+  &:hover {
+      background-color: $blue;
+      color: $white;
+      transition: all 0.5 ease-in-out;
+  }
+}
+
+
+

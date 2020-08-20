@@ -6,3 +6,7 @@
   @include back-btn();
   margin: 20px 0px 20px 0px;
 }
+
+.add-btn {
+  @include add-btn();
+}

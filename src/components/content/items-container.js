@@ -78,6 +78,7 @@ export default class ItemsContainer extends Component {
 
   return (
     <div className="items-container">
+      <h1>Features posts this mounth</h1>
       {/* <h2>{this.state.pageTitle}</h2> */}
       {this.OneItem()}
     </div>

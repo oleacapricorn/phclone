@@ -30,8 +30,9 @@ export default class NavContainer extends Component {
           </div>
         </div>
         <div className="nav-right-side"> 
-          <button className="btn"> Add Post</button>
+          <button className="add-btn">+</button>
         </div>
+
       </div>
     );
   }
