@@ -9,11 +9,13 @@ export default function (props) {
         <li className="one-item-container">
           <div className="post-img-wrapper">
             <img src={props.img} alt="image" />
+            <h5>🙎‍♂ {props.user}</h5>
           </div>
           <div className="post-text-wrapper">
             <h3>{props.title}</h3>
-            <h4>{props.description}</h4>
+            <h4>💬 {props.description}</h4>
             <h5>🗓 {props.date}</h5>
+           
 
             <div className="post-url-wrapper"></div>
           </div>
@@ -21,8 +23,7 @@ export default function (props) {
          <div className="post-btn-wrapper">
          <UpvoteBtn />
 
-         <a href={props.website} target="_blank">Website</a>
-
+         <a href={props.website} target="_blank">{props.website}</a>
          </div>
         </li>
       </ul>

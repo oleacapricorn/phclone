@@ -9,12 +9,12 @@ export default class DBItemsContainer extends Component {
     super();
 
     this.state = {
-    pageTitle: "Featured",
-    isLoading: false,
-    data: []
+    pageTitle: "Posts",
+    isLoading: false
     };
 
     this.handleFilter = this.handleFilter.bind(this);
+    this.Post = this.Post.bind(this);
   }
 
   handleFilter(filter) {
@@ -29,18 +29,26 @@ export default class DBItemsContainer extends Component {
     const validToken = 'ce3aeba14a46f6ed8d4183a4af9c099299d75';
     let config = {
       headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ' + validToken
+        "content-type": "application/json",
+        "x-apikey": validToken,
+        "cache-control": "no-cache"
       }
     }
+
+    let data_ = {headers: {
+      "content-type": "application/json",
+      "x-apikey": validToken,
+      "cache-control": "no-cache",
+      "Access-Control-Allow-Origin": "*"
+                }};
     axios
-    .get("https://phclone-24db.restdb.io/rest/posts",
-    config
+    .get("https://cors-anywhere.herokuapp.com/https://phclone-24db.restdb.io/rest/posts",
+    data_
     )
     .then(response => {
       console.log("response data", response);
       this.setState({
-        data: response.data.posts
+        data: response.data
       });
     })
     .catch(error => {
@@ -50,18 +58,25 @@ export default class DBItemsContainer extends Component {
 
 
   Post() {
+
+    console.log('Post', this.state)
     return this.state.data.map(item => {
-      return <Post
-      title={item.name} 
-      description={item.tagline} 
-      url={item.discussion_url} 
-      date={item.day} 
-      img={item.thumbnail.image_url} 
+    
+    // return <div>
+    //   {item.title} //see response items
+    // </div>
+       return <Post
+      key={item._id} 
+      title={item.title} 
+      description={item.description} 
       upvotes={item.votes_count}  
       website={item.redirect_url} 
-      user={ItemsContainer.user}
-      key={item.id} 
-      slug={item.slug} />;
+      user={item.user.email} 
+      date={item._created}
+      img={item.imgage_url} 
+      
+ />;
+  
     });
   }
 
@@ -70,15 +85,17 @@ export default class DBItemsContainer extends Component {
   }
 
   render() {
+    console.log('Render',this.state);
     if (this.state.isLoading) {
       return <div>Loading...</div>;
     }
 
   return (
+    
     <div className="items-container">
-      <h1>Features posts this mounth</h1>
+      <h1>Recent Posts</h1>
       {/* <h2>{this.state.pageTitle}</h2> */}
-      {this.Post()}
+      {this.state.data !=null ? this.Post() : 'Loading'}
     </div>
   );
 }
