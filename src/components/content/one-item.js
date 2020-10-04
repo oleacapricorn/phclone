@@ -4,7 +4,6 @@ import UpvoteBtn from "../content/upvote-button";
 
 export default function (props) {
   return (
-    <div>
       <ul>
         <li className="one-item-container">
           <div className="post-img-wrapper">
@@ -28,6 +27,6 @@ export default function (props) {
          </div>
         </li>
       </ul>
-    </div>
+    
   );
 }

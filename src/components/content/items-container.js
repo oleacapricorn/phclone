@@ -9,9 +9,9 @@ export default class ItemsContainer extends Component {
     super();
 
     this.state = {
-    pageTitle: "Featured",
-    isLoading: false,
-    data: []
+      pageTitle: "Featured",
+      isLoading: false,
+      data: []
     };
 
     this.handleFilter = this.handleFilter.bind(this);
@@ -25,7 +25,7 @@ export default class ItemsContainer extends Component {
     });
   }
 
-  getPHItems () {
+  getPHItems() {
     const validToken = '9X8KyWAJJY1GLB9zt0JVtXfIOUwZEoA1nCH3NoEexgQ';
     let config = {
       headers: {
@@ -33,37 +33,37 @@ export default class ItemsContainer extends Component {
       }
     }
     axios
-    // .get("https://itunes.apple.com/search?term=beyonce&entity=musicVideo")
-    .get("https://api.producthunt.com/v1/posts/all?sort_by=votes_count&order=desc&search[featured_month]=5&search[featured_year]=2020",
-    config
-    )
-    .then(response => {
-      console.log("response data", response);
-      this.setState({
-        data: response.data.posts
+      // .get("https://itunes.apple.com/search?term=beyonce&entity=musicVideo")
+      .get("https://api.producthunt.com/v1/posts/all?sort_by=votes_count&order=desc&search[featured_month]=5&search[featured_year]=2020",
+        config
+      )
+      .then(response => {
+        console.log("response data", response);
+        this.setState({
+          data: response.data.posts
+        });
+      })
+      .catch(error => {
+        console.log(error);
       });
-    })
-    .catch(error => {
-      console.log(error);
-    });
   }
 
 
   OneItem() {
     return this.state.data.map(item => {
-      return <OneItem 
-      title={item.name} 
-      description={item.tagline} 
-      url={item.discussion_url} 
-      created_at={item.created_at} 
-      date={item.day} 
-      img={item.thumbnail.image_url} 
-      comments={item.comments_count} 
-      upvotes={item.votes_count}  
-      website={item.redirect_url} 
-      user={ItemsContainer.user}
-      key={item.id} 
-      slug={item.slug} />;
+      return <OneItem
+        title={item.name}
+        description={item.tagline}
+        url={item.discussion_url}
+        created_at={item.created_at}
+        date={item.day}
+        img={item.thumbnail.image_url}
+        comments={item.comments_count}
+        upvotes={item.votes_count}
+        website={item.redirect_url}
+        user={ItemsContainer.user}
+        key={item.id}
+        slug={item.slug} />;
     });
   }
 
@@ -76,12 +76,14 @@ export default class ItemsContainer extends Component {
       return <div>Loading...</div>;
     }
 
-  return (
-    <div className="items-container">
-      <h1>Features posts this mounth</h1>
-      {/* <h2>{this.state.pageTitle}</h2> */}
-      {this.OneItem()}
-    </div>
-  );
-}
+    return (
+      <div className="items-container">
+        <div className="items-container-left">
+        <div className="heading">FEATURED</div>
+          {/* <h2>{this.state.pageTitle}</h2> */}
+          {this.OneItem()}
+        </div>
+      </div>
+    );
+  }
 }

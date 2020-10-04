@@ -1,14 +1,16 @@
 .btn {
   @include base-btn();
-  margin: 0px 20px 0px 20px;
-
 }
 
 .btn-Upvote {
   @include back-btn();
-  margin: 20px 0px 20px 0px;
 }
 
 .add-btn {
+  @include add-btn();
+  margin-right: 20px;
+}
+
+.btn-cancel {
   @include add-btn();
 }

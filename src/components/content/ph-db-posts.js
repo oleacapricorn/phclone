@@ -9,8 +9,8 @@ export default class DBItemsContainer extends Component {
     super();
 
     this.state = {
-    pageTitle: "Posts",
-    isLoading: false
+      pageTitle: "Posts",
+      isLoading: false
     };
 
     this.handleFilter = this.handleFilter.bind(this);
@@ -25,7 +25,7 @@ export default class DBItemsContainer extends Component {
     });
   }
 
-  getDBItems () {
+  getDBItems() {
     const validToken = 'ce3aeba14a46f6ed8d4183a4af9c099299d75';
     let config = {
       headers: {
@@ -35,25 +35,27 @@ export default class DBItemsContainer extends Component {
       }
     }
 
-    let data_ = {headers: {
-      "content-type": "application/json",
-      "x-apikey": validToken,
-      "cache-control": "no-cache",
-      "Access-Control-Allow-Origin": "*"
-                }};
+    let data_ = {
+      headers: {
+        "content-type": "application/json",
+        "x-apikey": validToken,
+        "cache-control": "no-cache",
+        "Access-Control-Allow-Origin": "*"
+      }
+    };
     axios
-    .get("https://cors-anywhere.herokuapp.com/https://phclone-24db.restdb.io/rest/posts",
-    data_
-    )
-    .then(response => {
-      console.log("response data", response);
-      this.setState({
-        data: response.data
+      .get("https://cors-anywhere.herokuapp.com/https://phclone-24db.restdb.io/rest/posts",
+        data_
+      )
+      .then(response => {
+        console.log("response data", response);
+        this.setState({
+          data: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
       });
-    })
-    .catch(error => {
-      console.log(error);
-    });
   }
 
 
@@ -61,22 +63,21 @@ export default class DBItemsContainer extends Component {
 
     console.log('Post', this.state)
     return this.state.data.map(item => {
-    
-    // return <div>
-    //   {item.title} //see response items
-    // </div>
-       return <Post
-      key={item._id} 
-      title={item.title} 
-      description={item.description} 
-      upvotes={item.votes_count}  
-      website={item.redirect_url} 
-      user={item.user.email} 
-      date={item._created}
-      img={item.imgage_url} 
-      
- />;
-  
+      // return <div>
+      //   {item.title} //see response items
+      // </div>
+      return <Post
+        key={item._id}
+        title={item.title}
+        description={item.description}
+        upvotes={item.votes_count}
+        website={item.redirect_url}
+        user={item.user.email}
+        date={item._created}
+        img={item.imgage_url}
+
+      />;
+
     });
   }
 
@@ -85,18 +86,21 @@ export default class DBItemsContainer extends Component {
   }
 
   render() {
-    console.log('Render',this.state);
+    console.log('Render', this.state);
     if (this.state.isLoading) {
       return <div>Loading...</div>;
     }
 
-  return (
-    
-    <div className="items-container">
-      <h1>Recent Posts</h1>
-      {/* <h2>{this.state.pageTitle}</h2> */}
-      {this.state.data !=null ? this.Post() : 'Loading'}
-    </div>
-  );
-}
+    return (
+
+      <div className="items-container">
+        <div className="items-container-right">        
+          <div className="heading">RECENT</div>
+          {/* <h2>{this.state.pageTitle}</h2> */}
+          {this.state.data != null ? this.Post() : 'Loading'}
+        </div>
+        </div>
+
+    );
+  }
 }

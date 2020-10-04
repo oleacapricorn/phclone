@@ -39,7 +39,6 @@ export default class ItemsContainer extends Component {
 
     return (
       <div className="items-wrapper">
-      <h1>"Features this mounth"</h1>
         <ItemsList data={this.state.Items} />        
       </div>
     );
