@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import MainButton from "./button";
-import CancelButton from "./btn-cancel";
-
+import axios from "axios";
 
 export default class ItemForm extends Component {
-  constructor(props) {
-    super(props);
+  constructor(proprs) {
+    super(proprs);
 
     this.state = {
-      name: "",
-      description: ""
+      title: '',
+      description: '',
+      website: '',
+      img:[]
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,72 +18,113 @@ export default class ItemForm extends Component {
   }
 
   buildForm() {
-    let formData = new FormData();
+let formData = new FormData();
 
-    formData.append("portfolio_item[name]", this.stata.name);
-    formData.append("portfolio_item[description]", this.stata.description);
+formData.append('posts[title]', this.state.title);
+formData.append('post-file', file, file.name);
 
-    return formData;
+return formData;
+  }
+
+  handleSubmit(event) {
+    const validToken = 'ce3aeba14a46f6ed8d4183a4af9c099299d75';
+    let config = {
+      headers: {
+        "content-type": "application/json",
+        "x-apikey": validToken,
+        "cache-control": "no-cache"
+      }
+    };
+
+    let data_ = {
+      headers: {
+        "content-type": "application/json",
+        "x-apikey": validToken,
+        "cache-control": "no-cache",
+        "Access-Control-Allow-Origin": "*"
+      }
+    };
+
+    axios.post("https://cors-anywhere.herokuapp.com/https://phclone-24db.restdb.io/rest/posts",
+
+      {
+        "title": this.state.title,
+        "description": this.state.description,
+        "website": this.state.website,
+        "upvotes": "0",
+        "img": this.state.img
+    },
+      data_
+      )
+      .then(response => {
+       console.log("response data", response);
+       console.log("state values", this.state.title);
+
+        this.props.handleSuccessfullFormSubmission(response.data);
+      })
+      .catch(error => {
+        console.log("handleSubmit for post error", error);
+      });
+
+    event.preventDefault();
   }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log("handle change", event)
   }
-
-  handleSubmit(event) {
-    console.log("handle change", event)
-  }
-
+  
   render() {
     return (
       <div className="form-wrapper">
         <h2>Post Product </h2>
         <form onSubmit={this.handleSubmit}>
+
           <div className="form-input-title">
             <input
               type="text"
-              name="name"
+              name="title"
               placeholder="Title"
-              value={this.state.name}
-              onChange={this.handleChange}>
+             value={this.state.title}
+             onChange={this.handleChange}
+              >
             </input>
           </div>
 
           <div className="form-input-desctoption">
             <textarea
               type="text"
-              name="desctoption"
-              placeholder="Desctoption"
-              value={this.state.desctoption}
-              onChange={this.handleChange}>
+              name="description"
+              placeholder="Description"
+              value={this.state.description}
+              onChange={this.handleChange}
+              >
             </textarea>
           </div>
 
           <div className="form-input-website">
             <input
               type="text"
-              name="name"
+              name="website"
               placeholder="Website"
-              value={this.state.name}
-              onChange={this.handleChange}>
+              value={this.state.website}
+              onChange={this.handleChange}
+              >
             </input>
           </div>
 
           <div dropzone="upload">
-            <input type="file" id="myfile" name="myfile">
-
+            <input type="file" 
+            id="post-file" 
+            name="img"
+            value={this.state.img}
+            onChange={this.handleChange}
+            >
             </input>
           </div>
-
-        </form>
-
-        <div className="form-btn">
           <MainButton />
-          <CancelButton />
-        </div>
+        </form>
       </div>
 
     );

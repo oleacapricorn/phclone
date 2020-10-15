@@ -8,11 +8,10 @@ export default function () {
   return (
     <div className="main-wrapper">
       <div className="items-container">
-
-        <div >
+        <div className="items-container-left">
           <ItemsContainer />
         </div>
-        <div >
+        <div className="items-container-right">
           <DBItemsContainer />
         </div>
       </div>

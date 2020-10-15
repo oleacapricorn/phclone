@@ -22,6 +22,7 @@ export default class App extends Component {
             <Route path="/create" component={Create} />
             <Route path="/edit" component={Edit} />
             <Route path="/view" component={View} />
+  
           </Switch>
         </div>
       </Router>

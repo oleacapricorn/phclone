@@ -1,11 +1,13 @@
 import React from "react";
 
-import DBItemsContainer from "../content/ph-db-posts";
+import DBItemsContainer2 from "../content/ph-items(test)";
 
 export default function() {
   return (
+    <div className="main-wrapper">
     <div className="items-container">
-        <DBItemsContainer />
+        <DBItemsContainer2 />
+    </div>
     </div>
   );
 }

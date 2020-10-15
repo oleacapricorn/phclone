@@ -60,7 +60,6 @@ export default class DBItemsContainer extends Component {
 
 
   Post() {
-
     console.log('Post', this.state)
     return this.state.data.map(item => {
       // return <div>
@@ -72,10 +71,8 @@ export default class DBItemsContainer extends Component {
         description={item.description}
         upvotes={item.votes_count}
         website={item.redirect_url}
-        user={item.user.email}
         date={item._created}
-        img={item.imgage_url}
-
+        // img={item.img}
       />;
 
     });
@@ -95,8 +92,7 @@ export default class DBItemsContainer extends Component {
 
       <div className="items-container">
         <div className="items-container-right">        
-          <div className="heading">RECENT</div>
-          {/* <h2>{this.state.pageTitle}</h2> */}
+          <div className="heading">RECENT POSTS</div>
           {this.state.data != null ? this.Post() : 'Loading'}
         </div>
         </div>

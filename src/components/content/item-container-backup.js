@@ -22,7 +22,6 @@ export default class ItemsContainer extends Component {
       }
     }
     axios
-    // .get("https://itunes.apple.com/search?term=beyonce&entity=musicVideo")
     .get("https://api.producthunt.com/v1/posts/all?sort_by=votes_count&order=desc&search[featured_month]=5&search[featured_year]=2020",
     config
     )

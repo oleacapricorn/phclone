@@ -33,7 +33,6 @@ export default class ItemsContainer extends Component {
       }
     }
     axios
-      // .get("https://itunes.apple.com/search?term=beyonce&entity=musicVideo")
       .get("https://api.producthunt.com/v1/posts/all?sort_by=votes_count&order=desc&search[featured_month]=5&search[featured_year]=2020",
         config
       )
@@ -79,7 +78,7 @@ export default class ItemsContainer extends Component {
     return (
       <div className="items-container">
         <div className="items-container-left">
-        <div className="heading">FEATURED</div>
+        <div className="heading">FEATURED POSTS</div>
           {/* <h2>{this.state.pageTitle}</h2> */}
           {this.OneItem()}
         </div>

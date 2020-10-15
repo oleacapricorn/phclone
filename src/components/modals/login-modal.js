@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import ReactModal from "react-modal";
 
 import SignInForm from '../auth/signinForm';
+import Login from '../auth/login';
 
 
 ReactModal.setAppElement(".app-wrapper");
@@ -18,7 +19,7 @@ export default class LoginModal extends Component {
         right: "auto",
         marginRight: "-50%",
         transform: "translate(-50%, -50%",
-        width: "600px"
+        width: 500      
       },
       overlay: {
         backgroundColor: "rgba(1, 1, 1, 0.75)"
@@ -34,9 +35,9 @@ export default class LoginModal extends Component {
         this.props.handleModalClose();
       }}
       isOpen={this.props.modalIsOpen}>
-        <h1>Login</h1>
 
-        <SignInForm />
+        {/* <SignInForm /> */}
+        <Login />
 
       </ReactModal>
     );

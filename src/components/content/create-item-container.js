@@ -9,12 +9,22 @@ export default class CreateItemContainer extends Component {
     this.state = {
       Items: []
     };
-  }
+
+  this.handleSuccessfullFormSubmission = this.handleSuccessfullFormSubmission.bind(
+    this
+  );
+}
+
+handleSuccessfullFormSubmission(post) {
+  console.log("create post form", post);
+}
 
   render() {
     return (
-      <div>
-        <ItemForm />
+      <div className='create-form-warapper'>
+        <ItemForm 
+       handleSuccessfullFormSubmission={this.handleSuccessfullFormSubmission}
+        />
       </div>
     );
   }

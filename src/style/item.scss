@@ -1,4 +1,5 @@
 body
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -6,6 +7,8 @@ ul {
 }
 .main-wrapper {
   padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .heading {
   padding-bottom: 20px; 
@@ -15,7 +18,6 @@ ul {
 display: flex;
 align-items: stretch;
 justify-content: space-between;
-
 }
 
 .one-item-container {
@@ -23,71 +25,73 @@ justify-content: space-between;
   padding: 1.5em;
   border-radius: 10px;
   border: solid 1px #f2f2fc;
+  margin: 0 auto;
 }
+
 
 .items-container-left {
 
   .one-item-container {
     display: grid;
-    grid-gap: 20px;
-    grid-template-columns: 1fr 3fr 1fr;
-    margin: 0 0 20px 0;
+    grid-gap: 15px;
+    grid-template-columns: 1fr 3fr;
+    margin: 0 0 30px 0;
 }
 }
 
 .items-container-right {
-
   .one-item-container {
     display: grid;
-    grid-gap: 20px;
-    margin: 0 0 20px 0;
-    max-width: 350px;
+    margin: 0 0 30px 0;
+    max-width: 400px;
     align-content: center;
 
 }
 }
-
-
-.list-items-container {
-  background-color: cornsilk;
-
-a {
-  color: $green;
-  text-decoration: none;
-  font-size: 14px;
-  text-transform: uppercase;
-  font-weight: 500;
-
-  &:hover {
-    color: $blue;
-    font-weight: 900;
-    text-decoration: none;
-
-  }
-}
-}
-
-.item-wrapper {
-background-color: aquamarine;
+.second-item-container {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 2fr 2fr 1fr;
+  margin: 0 0 30px 0;
+  background-color: white;
+  padding: 1.5em;
+  border-radius: 10px;
+  border: solid 1px #f2f2fc;
+  
 }
 
 .post-img-wrapper {
-
   img {
   width: 10em;
   height: 10em;
   border-radius: 10px;
+}                                                
 }
-                                                  
+
+.post-bottom {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  
+  .post-url-wrapper{
+    display: flex;
+    align-items: center;
+  }
+  
+  .post-btn-wrapper {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .post-text-wrapper {
-  // width: 45em;
- background-color: aqua;
 
+  margin-bottom: 0;
 }
 
 .post-btn-wrapper {
-  background-color: aquamarine;
+
+  //   background-color: cornsilk;
+  // border-left: solid 1px $grey; 
 
 }
