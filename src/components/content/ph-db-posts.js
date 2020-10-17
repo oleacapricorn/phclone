@@ -76,7 +76,7 @@ export default class DBItemsContainer extends Component {
         img={item.img}
       />;
 
-    });
+    })
   }
 
   componentDidMount() {

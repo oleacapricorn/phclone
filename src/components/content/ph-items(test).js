@@ -4,97 +4,71 @@ import axios from "axios";
 import Post from "./post2";
 
 
-export default class DBItemsContainer2 extends Component {
-  constructor() {
+class DBItemsContainer2 extends Component {
+  constructor(){
     super();
-
     this.state = {
-      pageTitle: "Posts",
-      isLoading: false
-    };
-
-    this.handleFilter = this.handleFilter.bind(this);
-    this.Post = this.Post.bind(this);
-  }
-
-  handleFilter(filter) {
-    this.setState({
-      data: this.state.data.filter(item => {
-        return item.name === filter;
-      })
-    });
+      pageTitle: "Posts"
+    }
+    
+    this.getDBItems = this.getDBItems.bind(this);
+    this.post = this.post.bind(this);
   }
 
   getDBItems() {
-    const validToken = 'ce3aeba14a46f6ed8d4183a4af9c099299d75';
-    let config = {
-      headers: {
-        "content-type": "application/json",
-        "x-apikey": validToken,
-        "cache-control": "no-cache"
-      }
-    }
+ const url_temp_prefix = 'https://cors-anywhere.herokuapp.com/';
+        const url = `${url_temp_prefix}phclone-24db.restdb.io/rest/posts`; 
 
-    let data_ = {
-      headers: {
-        "content-type": "application/json",
-        "x-apikey": validToken,
-        "cache-control": "no-cache",
-        "Access-Control-Allow-Origin": "*"
-      }
-    };
-    axios
-      .get("https://cors-anywhere.herokuapp.com/https://phclone-24db.restdb.io/rest/posts",
-        data_
-      )
-      .then(response => {
-        console.log("response data", response);
-        this.setState({
-          data: response.data
+        const data =   {
+            "async": true,
+            "crossDomain": true,
+            "headers": {
+            "content-type": "application/json",
+            "x-apikey": "ce3aeba14a46f6ed8d4183a4af9c099299d75",
+            "cache-control": "no-cache"
+          }};
+        
+        axios.get(url,data)
+        .then(response => {
+            console.log('respons',response.data);
+            this.setState({
+                data : response.data
+            }
+        )
+          })
+        .catch(error => {
+            console.log('error',error);
         });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
-
-
-  Post() {
-    console.log('Post', this.state)
-    return this.state.data.map(item => {
-      // return <div>
-      //   {item.title} //see response items
-      // </div>
-      return <Post
-        key={item._id}
-        title={item.title}
-        description={item.description}
-        upvotes={item.upvotes}
-        website={item.redirect_url}
-        date={item._created}
-       img={item.img}
-      />;
-
-    });
-  }
-
-  componentDidMount() {
-    this.getDBItems();
-  }
-
-  render() {
-    console.log('Render', this.state);
-    if (this.state.isLoading) {
-      return <div>Loading...</div>;
     }
 
-    return (
+    post(){
+      return this.state.data.map(item =>{
+        return <div key={item._id}>
+           <Post
+           key={item._id}
+           id={item._id}
+           title={item.title}
+           description={item.description}
+           upvotes={item.upvotes}
+           website={item.redirect_url}
+           date={item._created}
+           img={item.img}
+           />
+        </div> 
+      })
+    }
+  
+    componentDidMount() {
+      this.getDBItems();
+    }
 
+    render() {
+    return (
       <div >
         <div>        
           <div className="heading">RECENT POSTS</div>
           <div className="db-post-list">
-          {this.state.data != null ? this.Post() : 'Loading'}
+          {this.state.data != null ? this.post() : 'Loading'}
           </div>
         </div>
         </div>
@@ -102,3 +76,4 @@ export default class DBItemsContainer2 extends Component {
     );
   }
 }
+export default DBItemsContainer2;
