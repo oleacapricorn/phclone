@@ -57,7 +57,7 @@ export default class NavContainer extends Component {
         <div className="nav-right-side">
           {/* <Profile /> */}
           <NavLink to="/create" activeClassName="nav-link-active">
-            <button className="add-btn">+</button>
+            <button className="add-btn">+ ADD</button>
           </NavLink>
           {/* <button onClick={this.handleLoginModalClick}
             className="btn">Login</button> */}

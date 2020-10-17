@@ -17,7 +17,8 @@ export default function (props) {
           </div>
           <div className="post-title">
             <div className="post-btn-wrapper">
-              <button className="upvote-count"> {props.upvotes == 'undefined' ? 0 : props.upvotes}  </button> <button type="submit" className="btn-Upvote"> upvote </button>
+              <button className="upvote-count"> {props.upvotes == 'undefined' ? 0 : props.upvotes}  </button> 
+              <button className="btn-Upvote"> upvote </button>
             </div>
             <div className="post-url-wrapper">
               <a href={props.website} target="_blank">website</a>

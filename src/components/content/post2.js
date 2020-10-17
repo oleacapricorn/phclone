@@ -20,7 +20,6 @@ export default function (props) {
             </div>
 
             <div className="post-btn-wrapper">
-            <button className="upvote-count"> {props.upvotes == 'undefined' ? 0 : props.upvotes}  </button> <button type="submit" className="btn-Upvote"> upvote </button>
             </div>
 
           </li>
