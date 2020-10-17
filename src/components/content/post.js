@@ -1,6 +1,5 @@
 import React from "react";
 
-import UpvoteBtn from "../content/upvote-button";
 
 export default function (props) {
   return (
@@ -11,21 +10,19 @@ export default function (props) {
             <img src={props.img} alt="image" />
           </div> */}
           <div className="post-text-wrapper">
-          <div className="post-bottom">
-            <h2>{props.title}</h2>
-            <h5> ⬆️ {props.upvotes} upvotes</h5>
+            <div className="post-title">
+              <h2>{props.title}</h2>
             </div>
             <h4> {props.description}</h4>
-      
           </div>
-          <div className="post-bottom">
-              <div className="post-url-wrapper">
-                <a href={props.website} target="_blank">Website</a>
-              </div>
-              <div className="post-btn-wrapper">
-                  <UpvoteBtn />
-                </div>
+          <div className="post-title">
+            <div className="post-btn-wrapper">
+              <button className="upvote-count"> {props.upvotes == 'undefined' ? 0 : props.upvotes}  </button> <button type="submit" className="btn-Upvote"> upvote </button>
             </div>
+            <div className="post-url-wrapper">
+              <a href={props.website} target="_blank">website</a>
+            </div>
+          </div>
 
         </li>
       </ul>

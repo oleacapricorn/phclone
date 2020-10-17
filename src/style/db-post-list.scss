@@ -1,0 +1,36 @@
+.db-post-list{
+  background-color: white;
+  border-radius: 10px;
+  border: solid 1px #f2f2fc;
+
+  ul{
+    border-bottom:  solid 1px #f2f2fc;
+    padding: 1.5em;
+
+    &:hover {
+    background-color: #fafafa;
+}}}
+
+.second-item-container {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 1fr 2fr 1fr;
+
+}
+
+.post-btn-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.upvote-count{
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+  font-size:0.9em;
+  font-weight: 500;
+  border: 1px solid $green;;
+  border-radius: 4px;
+  transition: all 0.5 ease-in-out;
+  color: $green;;
+}

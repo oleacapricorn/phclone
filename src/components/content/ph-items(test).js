@@ -69,10 +69,10 @@ export default class DBItemsContainer2 extends Component {
         key={item._id}
         title={item.title}
         description={item.description}
-        upvotes={item.votes_count}
+        upvotes={item.upvotes}
         website={item.redirect_url}
         date={item._created}
-        // img={item.img}
+       img={item.img}
       />;
 
     });
@@ -93,7 +93,9 @@ export default class DBItemsContainer2 extends Component {
       <div >
         <div>        
           <div className="heading">RECENT POSTS</div>
+          <div className="db-post-list">
           {this.state.data != null ? this.Post() : 'Loading'}
+          </div>
         </div>
         </div>
 

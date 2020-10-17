@@ -25,11 +25,11 @@ h2 {
 }
 h4 {
   font-size: 16px;
-  color: $grey;
   margin: 0 auto;
 }
 h5 {
   font-size: 14px;
+  text-align: center;
   color: $grey;
 }
 h6 {
@@ -41,14 +41,14 @@ h6 {
 
 
 a {
-  color: $green;
+  color: $blue;
   text-decoration: none;
   font-size: 14px;
   text-transform: uppercase;
   font-weight: 500;
 
   &:hover {
-    color: $blue;
+    color: $green;
     font-weight: 900;
     text-decoration: none;
 

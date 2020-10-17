@@ -67,12 +67,13 @@ export default class DBItemsContainer extends Component {
       // </div>
       return <Post
         key={item._id}
+        id={item._id}
         title={item.title}
         description={item.description}
-        upvotes={item.votes_count}
+        upvotes={item.upvotes}
         website={item.redirect_url}
         date={item._created}
-        // img={item.img}
+        img={item.img}
       />;
 
     });
@@ -90,12 +91,12 @@ export default class DBItemsContainer extends Component {
 
     return (
 
-      <div className="items-container">
-        <div className="items-container-right">        
-          <div className="heading">RECENT POSTS</div>
+      <div  className="items-container">
+        <div className="items-container-right">
+        <div className="heading">RECENT POSTS</div>
           {this.state.data != null ? this.Post() : 'Loading'}
         </div>
-        </div>
+      </div>
 
     );
   }

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import LoginModal from "../modals/login-modal";
 import LoginButton from "../auth/button-login";
+// import Profile from "./user";
 
 import { Auth0Provider } from "@auth0/auth0-react";
 
@@ -54,6 +55,7 @@ export default class NavContainer extends Component {
         </div>
 
         <div className="nav-right-side">
+          {/* <Profile /> */}
           <NavLink to="/create" activeClassName="nav-link-active">
             <button className="add-btn">+</button>
           </NavLink>
