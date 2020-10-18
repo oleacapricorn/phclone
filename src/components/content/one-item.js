@@ -17,10 +17,14 @@ export default function (props) {
             <a href={props.website} target="_blank">website</a>
           </div>
 
+          {/* <div className="post-url-wrapper">
+           <h4>{props.created_at}</h4>
+          </div> */}
+
         </div>
         <div className="upvotes-count">
-          <p>⬆️ </p>
-          <h5>{props.upvotes} upvotes</h5>
+          <p>⬆️</p>
+          <h5>{props.upvotes}</h5>
         </div>
       </li>
     </ul>

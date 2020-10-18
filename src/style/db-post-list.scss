@@ -2,9 +2,9 @@
   background-color: white;
   border-radius: 10px;
   border: solid 1px #f2f2fc;
+  margin-bottom: 30px;
 
   ul{
-    border-bottom:  solid 1px #f2f2fc;
     padding: 1.5em;
 
     &:hover {
@@ -15,7 +15,6 @@
   display: grid;
   grid-gap: 15px;
   grid-template-columns: 1fr 2fr 1fr;
-
 }
 
 .post-btn-wrapper {

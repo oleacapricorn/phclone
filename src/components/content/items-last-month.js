@@ -4,7 +4,7 @@ import axios from "axios";
 import OneItem from "./one-item";
 
 
-export default class ItemsContainer extends Component {
+export default class ItemsContainerLast extends Component {
   constructor() {
     super();
 
@@ -33,9 +33,9 @@ export default class ItemsContainer extends Component {
       }
     }
     axios
-      .get("https://api.producthunt.com/v1/posts/all?sort_by=votes_count&order=desc&search[featured_month]=10&search[featured_year]=2020",
-        config
-      )
+      .get("https://api.producthunt.com/v1/posts/all?sort_by=votes_count&order=desc&search[featured_month]=9&search[featured_year]=2020",
+      config
+    )
       .then(response => {
         console.log("response data", response);
         this.setState({
@@ -47,9 +47,10 @@ export default class ItemsContainer extends Component {
       });
   }
 
+
   OneItem() {
-    return this.state.data.slice(0,5).map(item =>  {
-    return <OneItem
+    return this.state.data.slice(0,5).map(item => {
+      return <OneItem
         title={item.name}
         description={item.tagline}
         url={item.discussion_url}
@@ -76,7 +77,8 @@ export default class ItemsContainer extends Component {
     return (
       <div className="items-container">
         <div className="items-container-left">
-        <div className="heading">THIS MONTH</div>
+        <div className="heading">LAST MONTH</div>
+          {/* <h2>{this.state.pageTitle}</h2> */}
           {this.OneItem()}
         </div>
       </div>

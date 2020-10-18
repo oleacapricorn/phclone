@@ -10,7 +10,7 @@ export default class ItemForm extends Component {
       title: '',
       description: '',
       website: '',
-      img:[]
+      img:[],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -59,8 +59,8 @@ return formData;
       .then(response => {
        console.log("response data", response);
        console.log("state values", this.state.title);
-
         this.props.handleSuccessfullFormSubmission(response.data);
+        this.redirect;
       })
       .catch(error => {
         console.log("handleSubmit for post error", error);
@@ -76,7 +76,11 @@ return formData;
   }
   
   render() {
-    return (
+    const { redirect } = this.state;
+    if (redirect) {
+      return <Redirect to="/view" />;
+    }
+    return (      
       <div className="form-wrapper">
         <h2>Post Product </h2>
         <form onSubmit={this.handleSubmit}>
