@@ -6,26 +6,16 @@ class DBItemsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageTitle: "Posts"
+      data: []
     }
     this.handleClick = this.handleClick.bind(this);
     this.getDBItems = this.getDBItems.bind(this);
     this.post = this.post.bind(this);
-    //  this.handleFilter = this.handleFilter.bind(this);
-
   }
-
-  // handleFilter(filter) {
-  //   this.setState({
-  //     data: this.state.data.filter(item => {
-  //       return item.name === filter;
-  //     })
-  //   });
-  // }
 
   post(item) {
     console.log('state data', this.state.data);
-    return this.state.data.slice(0,5).map(item => {
+    return this.state.data.slice(0,5).map((item) => {
       console.log('item', item)
       return <div key={item._id}>
        <div>
@@ -39,7 +29,7 @@ class DBItemsContainer extends Component {
           <div className="post-title">
             <div className="post-btn-wrapper">
               <button className="upvote-count"> {item.upvotes == 'undefined' ? 0 : item.upvotes}  </button> 
-              <button className="btn-Upvote"> upvote </button>
+              <button className="btn-Upvote"  key={item} onClick={() => this.handleClick(item)}> upvote </button>
             </div>
             <div className="post-url-wrapper">
               <a href={item.website} target="_blank">website</a>
@@ -80,7 +70,7 @@ class DBItemsContainer extends Component {
       .then(response => {
         console.log('request response', response.data);
         this.setState({
-          data: response.data
+          data: [response.data]
         }
         )
       })
@@ -110,7 +100,7 @@ class DBItemsContainer extends Component {
     axios.get(url, data)
       .then(response => {
         console.log('respons', response.data);
-        this.setState({ data: response.data });
+        this.setState({data: response.data});
       })
       .catch(error => {
         console.log('error', error);

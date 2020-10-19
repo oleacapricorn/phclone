@@ -11,10 +11,13 @@
     background-color: #fafafa;
 }}}
 
+.test {
+  display: flex;
+  flex-direction: column;
+}
+
 .second-item-container {
-  display: grid;
-  grid-gap: 15px;
-  grid-template-columns: 1fr 2fr 1fr;
+
 }
 
 .post-btn-wrapper {

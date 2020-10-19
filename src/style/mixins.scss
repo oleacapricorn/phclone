@@ -45,11 +45,11 @@
 
 @mixin add-btn {
   height: 40px;
+  width: 80px;
   font-size:0.9em;
   font-weight: 500;
-  background-color: $green;
+  background-color: $blue;
   border-radius: 40px;
-  border-color: $green;
 
   transition: all 0.5 ease-in-out;
   color: $white;
@@ -60,8 +60,8 @@
   }
 
   &:hover {
-      background-color: $blue;
-      border-color: $blue;
+      background-color: $green;
+      border-color: $green;
 
       transition: all 0.5 ease-in-out;
   }

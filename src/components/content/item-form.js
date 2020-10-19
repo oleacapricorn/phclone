@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import MainButton from "./button";
 import axios from "axios";
+import { History } from 'react-router-dom';
+
 
 export default class ItemForm extends Component {
   constructor(proprs) {
@@ -11,10 +13,13 @@ export default class ItemForm extends Component {
       description: '',
       website: '',
       img:[],
+      status: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.testFunc = this.testFunc.bind(this);
+    
   }
 
   buildForm() {
@@ -28,14 +33,7 @@ return formData;
 
   handleSubmit(event) {
     const validToken = 'ce3aeba14a46f6ed8d4183a4af9c099299d75';
-    let config = {
-      headers: {
-        "content-type": "application/json",
-        "x-apikey": validToken,
-        "cache-control": "no-cache"
-      }
-    };
-
+  
     let data_ = {
       headers: {
         "content-type": "application/json",
@@ -46,7 +44,7 @@ return formData;
     };
 
     axios.post("https://cors-anywhere.herokuapp.com/https://phclone-24db.restdb.io/rest/posts",
-
+    
       {
         "title": this.state.title,
         "description": this.state.description,
@@ -56,12 +54,16 @@ return formData;
     },
       data_
       )
+
       .then(response => {
        console.log("response data", response);
        console.log("state values", this.state.title);
-        this.props.handleSuccessfullFormSubmission(response.data);
-        this.redirect;
-      })
+      this.props.handleSuccessfullFormSubmission(response.data);
+      if (response.status === 201) {
+      //  window.location.reload();
+       window.location.href = "/view";
+    }
+})
       .catch(error => {
         console.log("handleSubmit for post error", error);
       });
@@ -74,16 +76,15 @@ return formData;
       [event.target.name]: event.target.value
     });
   }
+
   
   render() {
-    const { redirect } = this.state;
-    if (redirect) {
-      return <Redirect to="/view" />;
-    }
     return (      
       <div className="form-wrapper">
         <h2>Post Product </h2>
-        <form onSubmit={this.handleSubmit}>
+        <form 
+         onSubmit={this.handleSubmit}
+        >
 
           <div className="form-input-title">
             <input
