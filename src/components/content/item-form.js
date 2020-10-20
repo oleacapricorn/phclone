@@ -17,9 +17,7 @@ export default class ItemForm extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.testFunc = this.testFunc.bind(this);
-    
+    this.handleSubmit = this.handleSubmit.bind(this);    
   }
 
   buildForm() {
