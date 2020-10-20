@@ -5,7 +5,9 @@ export default function (props) {
     <ul>
       <li className="one-item-container">
         <div className="post-img-wrapper">
+          <a href={props.website}>
           <img src={props.img} alt="image" />
+          </a>
         </div>
 
         <div className="post-text-wrapper">

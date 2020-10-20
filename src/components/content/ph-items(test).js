@@ -15,7 +15,6 @@ class DBItemsContainer2 extends Component {
     this.posts = this.posts.bind(this);
   }
 
-
   // post(){
   //   return this.state.data.map(item =>{
   //     return <div key={item._id}>
@@ -32,7 +31,7 @@ class DBItemsContainer2 extends Component {
   //     </div> 
   //   })
   // }
-  
+
   handleClick(post) {
     console.log('Click happened', post);
     const url_temp_prefix = 'https://cors-anywhere.herokuapp.com/';
@@ -58,36 +57,31 @@ class DBItemsContainer2 extends Component {
     axios.put(url, jsondata, settings)
       .then(response => {
         console.log('request response', response.data);
-        this.setState({
-          data: [response.data]
-        }
-        )
+
+        this.setState({ data: [response.data] });
+
       })
       .catch(error => {
         console.log('error', error);
       });
   }
 
-  componentDidMount() {
-    this.handleClick();
-  }
-
   posts(post) {
     console.log('state data', this.state.data);
     return this.state.data.map((post) => {
       console.log('post', post)
-      return <div key={post._id} className="db-post-list">
-          <ul>
-            <div className="test">
-              <li className="second-item-container">
-                {/* <div className="post-img-wrapper">
-                  <img src={post.img} alt="image" />
-                  <h2>{post.img}</h2>
-
-                </div> */}
+      const url = 'https://phclone-24db.restdb.io/media';
+      return <div key={post._id} >
+        <ul>
+            <li className="one-item-container">
+              <div className="post-img-wrapper">
+                <a href={post.website}>
+                  <img src={url+'/'+post.img} alt="image" />
+                </a>
+                </div>
                 <div className="post-text-wrapper">
                   <h2>{post.title}</h2>
-                  <h4> {post.description}</h4>
+                  <h4>{post.description}</h4>
                   <div className="post-url-wrapper">
                     <a href={post.website} target="_blank">website</a>
                   </div>
@@ -97,59 +91,54 @@ class DBItemsContainer2 extends Component {
                 <div className="post-btn-wrapper">
                   <button className="upvote-count"> {post.upvotes == 'undefined' ? 0 : post.upvotes} </button>
                   <button className="btn-Upvote" id="up" key={post} onClick={() => this.handleClick(post)}> upvote </button>
-
+                  {/* <h5>{post._created}</h5> */}
                 </div>
 
               </li>
-            </div>
+            
 
           </ul>
-      </div>
-    });
-  }
+          </div>
+        });
+      }
 
   getDBItems() {
     const url_temp_prefix = 'https://cors-anywhere.herokuapp.com/';
-    const url = `${url_temp_prefix}https://phclone-24db.restdb.io/rest/posts`;
-    const media = `${url_temp_prefix}https://phclone-24db.restdb.io/rest/media/`;
-
+    const url = `${url_temp_prefix}https://phclone-24db.restdb.io/rest/posts?q={}&h={%22$orderby%22:%20{%22_created%22:%20-1}}`;    
     const data = {
-      "async": true,
-      "crossDomain": true,
+          "async": true,
+        "crossDomain": true,
       "headers": {
-        "content-type": "application/json",
+          "content-type": "application/json",
         "x-apikey": "ce3aeba14a46f6ed8d4183a4af9c099299d75",
         "cache-control": "no-cache"
       }
     };
 
-    axios.get(url, data, media)
+    axios.get(url, data)
       .then(response => {
-        console.log('respons', response.data);
-        console.log('media', media)
-
-        this.setState({ data: response.data });
+          console.log('respons', response.data);
+        this.setState({data: response.data });
       })
       .catch(error => {
-        console.log('error', error);
-      });
-  }
-
-
+          console.log('error', error);
+        });
+    }
+  
   componentDidMount() {
-    this.getDBItems();
-  }
-
+          this.getDBItems();
+        }
+      
   render() {
     return (
       <div >
-        <div>        
-          <div className="heading">RECENT POSTS</div>
           <div>
-          {this.state.data != null ? this.posts() : 'Loading'}
+            <div className="heading">RECENT POSTS</div>
+            <div>
+              {this.state.data != null ? this.posts() : 'Loading'}
+            </div>
           </div>
         </div>
-        </div>
-    )}
-}
-export default DBItemsContainer2;
+        )}
+    }
+    export default DBItemsContainer2;

@@ -17,14 +17,24 @@ class DBItemsContainer extends Component {
     console.log('state data', this.state.data);
     return this.state.data.slice(0,5).map((item) => {
       console.log('item', item)
+      const url = 'https://phclone-24db.restdb.io/media';
       return <div key={item._id}>
        <div>
       <ul>
         <li className="one-item-container">
+        <div className="right-img-wrapper">
+                <a href={item.website}>
+                  <img src={url+'/'+item.img} alt="image" />
+                </a>
+                </div>
           <div className="post-text-wrapper">
             <div className="post-title">
               <h2>{item.title}</h2>
             </div>
+            {/* <div>
+            <h4>{item.description}</h4>
+            </div> */}
+           
           </div>
           <div className="post-title">
             <div className="post-btn-wrapper">
@@ -85,7 +95,7 @@ class DBItemsContainer extends Component {
 
   getDBItems() {
     const url_temp_prefix = 'https://cors-anywhere.herokuapp.com/';
-    const url = `${url_temp_prefix}https://phclone-24db.restdb.io/rest/posts`;
+    const url = `${url_temp_prefix}https://phclone-24db.restdb.io/rest/posts?q={}&h={%22$orderby%22:%20{%22_created%22:%20-1}}`;    
 
     const data = {
       "async": true,
