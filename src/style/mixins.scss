@@ -29,7 +29,9 @@
   border: 1px solid $blue;;
   border-radius: 4px;
   transition: all 0.5 ease-in-out;
-  color: $blue;;
+  color: $blue;
+  background-color: #ffffff;
+
 
   &:active,
   &:focus {
